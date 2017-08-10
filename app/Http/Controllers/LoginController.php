@@ -10,8 +10,8 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected function authenticated(Request $request, $user)
-    {
-        return response()->json($user);
-    }
+//    protected function authenticated(Request $request, $user)
+//    {
+//        return response()->json($user);
+//    }
 }

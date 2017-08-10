@@ -13,12 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//Route::middleware('auth:api')->all('/login', function (Request $request) {
+//    echo 'hello world';
+//    die;
 //    return $request->user();
 //});
-//
 
 
-//Route::group(['middleware' => ['auth:api']], function () {
-    Route::get('/login', 'LoginController@login');
+//Route::middleware('cors')->post('/login', 'LoginController@login');
+
+//Route::group(['middleware' => ['cors']], function () {
+    Route::post('/login', 'LoginController@login');
 //});
