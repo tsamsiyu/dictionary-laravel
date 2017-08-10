@@ -20,7 +20,5 @@ use Illuminate\Http\Request;
 
 
 //Route::group(['middleware' => ['auth:api']], function () {
-    Route::get('/test', function (Request $request) {
-        return response()->json(['name' => 'test']);
-    });
+    Route::get('/login', 'LoginController@login');
 //});
