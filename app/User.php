@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function hashPassword($pass)
+    {
+        return bcrypt($pass);
+    }
+
+    public static function generateToken()
+    {
+        return uniqid();
+    }
 }

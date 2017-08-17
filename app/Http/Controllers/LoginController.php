@@ -10,8 +10,15 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-//    protected function authenticated(Request $request, $user)
-//    {
-//        return response()->json($user);
-//    }
+    protected function sendLoginResponse(Request $request)
+    {
+        $this->clearLoginAttempts($request);
+        $user = $this->guard()->user();
+
+        return response()->json([
+            'token' => $user->api_token,
+            'name' => $user->name,
+            'email' => $user->email
+        ]);
+    }
 }
