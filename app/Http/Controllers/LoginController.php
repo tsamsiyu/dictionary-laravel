@@ -16,7 +16,7 @@ class LoginController extends Controller
         $user = $this->guard()->user();
 
         return response()->json([
-            'token' => $user->api_token,
+            'api_token' => $user->api_token,
             'name' => $user->name,
             'email' => $user->email
         ]);
