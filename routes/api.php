@@ -24,4 +24,6 @@ Route::post('/login', 'LoginController@login');
 
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/users/self', 'UserController@self');
+    Route::get('/jurisdictions', 'JurisdictionController@index');
+    Route::post('/companies', 'CompanyController@store');
 });
