@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -14,8 +15,8 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
-            'password' => \App\User::hashPassword('secret'),
-            'api_token' => \App\User::generateToken()
+            'password' => User::hashPassword('secret'),
+            'api_token' => User::generateToken()
         ]);
     }
 }
