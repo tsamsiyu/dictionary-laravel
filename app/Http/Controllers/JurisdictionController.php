@@ -16,7 +16,7 @@ class JurisdictionController extends Controller
         if ($request->sortName) {
             $query->orderBy($request->sortName, $request->sortOrder ?: 'asc'); // TODO: move default order value to config
         }
-        $records = Jurisdiction::all();
+        $records = $query->get();
         return response()->json($records);
     }
 
@@ -25,5 +25,12 @@ class JurisdictionController extends Controller
         $record = new Jurisdiction();
         $record->fill($request->all());
         $record->saveOrFail();
+        return response()->json($record);
+    }
+
+    public function destroy(Jurisdiction $jurisdiction)
+    {
+        $jurisdiction->delete();
+        return response('Deleted', 204);
     }
 }
