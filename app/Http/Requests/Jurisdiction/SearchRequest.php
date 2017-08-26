@@ -7,6 +7,8 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * @property string sortName
  * @property string sortOrder
+ * @property number id
+ * @property string name
  *
  * Class SearchRequest
  * @package App\Http\Requests\Jurisdiction
@@ -32,7 +34,9 @@ class SearchRequest extends FormRequest
     {
         return [
             'sortName' => 'nullable|string|in:id,name',
-            'sortOrder' => 'nullable|required_with:sortName|in:asc,desc'
+            'sortOrder' => 'nullable|required_with:sortName|in:asc,desc',
+            'name' => 'nullable|string|max:255',
+            'id' => 'nullable|numeric'
         ];
     }
 }
