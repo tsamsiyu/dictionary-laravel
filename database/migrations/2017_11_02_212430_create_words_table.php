@@ -15,10 +15,12 @@ class CreateWordsTable extends Migration
     {
         Schema::create('words', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('writing');
-            $table->string('root');
+            $table->string('writing')->unique();
+            $table->string('root')->nullable();
             $table->integer('author_id');
-            $table->integer('language_part_id');
+            $table->integer('language_part_id')->nullable();
+            $table->integer('language_id');
+            $table->timestamps();
 
             $table->foreign('author_id')
                 ->on('users')

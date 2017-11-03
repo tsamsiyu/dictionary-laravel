@@ -16,6 +16,7 @@ class CreateTranslationGroupsTable extends Migration
         Schema::create('translation_groups', function (Blueprint $table) {
             $table->increments('id');
             $table->text('explanation');
+            $table->timestamps();
         });
     }
 
