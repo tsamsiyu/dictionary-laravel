@@ -22,7 +22,7 @@ class CreateTranslationTable extends Migration
             $table->string('image_src')->nullable();
             $table->integer('frequency_usage')->nullable();
             $table->integer('applying_style_id')->nullable();
-            $table->integer('group_id');
+            $table->integer('group_id')->nullable();
             $table->integer('translated_word_id');
             $table->timestamps();
 

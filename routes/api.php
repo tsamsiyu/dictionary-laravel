@@ -2,10 +2,7 @@
 
 Route::post('/login', 'LoginController@login');
 
-Route::group(['middleware' => ['auth:api']], function () {
+Route::group(['middleware' => ['auth:api'], 'namespace' => 'Frontend'], function () {
+    Route::post('/new-word', 'MyDictionaryController@newWord');
     Route::get('/users/self', 'UserController@self');
-    Route::get('/jurisdictions/{jurisdiction}', 'JurisdictionController@item');
-
-    Route::resource('jurisdictions', 'JurisdictionController', ['only' => ['store', 'destroy', 'update', 'index']]);
-    Route::resource('companies', 'CompanyController', ['only' => ['store']]);
 });

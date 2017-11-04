@@ -13,12 +13,17 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class NewWordRequest extends FormRequest
 {
+    public function authorize()
+    {
+        return true;
+    }
+
     public function rules()
     {
         return [
             'word' => 'required',
-            'root' => 'required',
-            'languagePart' => 'required|in:' . $this->languagePartsIds(),
+            'root' => 'nullable',
+            'languagePart' => 'nullable|in:' . $this->languagePartsIds(),
             'sense' => 'required|array',
             'sense.*.name' => 'nullable',
             'sense.*.translation' => 'required|array',
