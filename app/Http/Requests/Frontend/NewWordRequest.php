@@ -37,14 +37,14 @@ class NewWordRequest extends FormRequest
 
     private function languagePartsIds()
     {
-        return FileDb::collectData('languageParts')
+        return FileDb::collectData('LanguageParts')
             ->pluck('id')
             ->implode(',');
     }
 
     private function applyingStylesIds()
     {
-        return FileDb::collectData('applyingStyles')
+        return FileDb::collectData('ApplyingStyles')
             ->pluck('id')
             ->implode(',');
     }

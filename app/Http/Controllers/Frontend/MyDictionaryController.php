@@ -9,11 +9,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Core\Controller;
-use App\Extensions\FileDb\FileDb;
 use App\Http\Requests\NewWordRequest;
-use App\Models\Translation;
-use App\Models\TranslationGroup;
-use App\Models\Word;
+use App\Models\Eloquent\Translation;
+use App\Models\Eloquent\TranslationGroup;
+use App\Models\Eloquent\Word;
+use App\Data\FileDb\Languages;
 
 class MyDictionaryController extends Controller
 {
@@ -26,7 +26,7 @@ class MyDictionaryController extends Controller
             $word->root = array_get($data, 'root');
             $word->author_id = auth()->user()->getAuthIdentifier(); // todo: move to observer
             $word->language_part_id = array_get($data, 'languagePart');
-            $word->language_id = 1;
+            $word->language_id = Languages::EN;
             $word->setRelation('translations', collect());
             $word->saveOrFail();
             foreach (array_get($data, 'sense') as $sense) {

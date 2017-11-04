@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class JurisdictionController extends Controller
 {
-    public function index(SearchRequest $request)
+    /*public function index(SearchRequest $request)
     {
         $query = Jurisdiction::query();
         if ($request->sortName) {
@@ -51,5 +51,5 @@ class JurisdictionController extends Controller
     {
         $jurisdiction->delete();
         return response('Deleted', 204);
-    }
+    }*/
 }

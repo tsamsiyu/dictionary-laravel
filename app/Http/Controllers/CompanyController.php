@@ -8,7 +8,7 @@ use App\Models\Company;
 
 class CompanyController extends Controller
 {
-    public function store(StoreRequest $request)
+/*    public function store(StoreRequest $request)
     {
         $data = $this->snakelize($request->all());
         dd($data);
@@ -24,5 +24,5 @@ class CompanyController extends Controller
             return $result;
         }, []);
 
-    }
+    }*/
 }

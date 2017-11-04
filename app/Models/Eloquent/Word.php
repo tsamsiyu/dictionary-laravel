@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\Word
+ * App\Models\Eloquent\Word
  *
  * @property int $id
  * @property string $writing
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $language_id
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Translation[] $translations
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Eloquent\Translation[] $translations
  */
 class Word extends Model
 {

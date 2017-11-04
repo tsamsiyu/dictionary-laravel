@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\TranslationGroup
+ * App\Models\Eloquent\TranslationGroup
  *
  * @property int $id
  * @property string $explanation

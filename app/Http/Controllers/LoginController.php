@@ -12,7 +12,7 @@ class LoginController extends Controller
 
     protected function sendLoginResponse(Request $request)
     {
-        /* @var \App\Models\User $user */
+        /* @var \App\Models\Eloquent\User $user */
         $user = $this->guard()->user();
 
         return response()->json([

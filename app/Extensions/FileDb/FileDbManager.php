@@ -11,25 +11,33 @@ namespace App\Extensions\FileDb;
 
 class FileDbManager
 {
-    private $_cache = [];
+    private $_modelsClassDir;
+    private $_dataClassDir;
 
-    public function getPath($name)
+    public function __construct(string $dataClassDir = 'App\Data\FileDb',
+                                string $modelsClassDir = 'App\Models\FileDb')
     {
-        return app_path('Data/' . $name . '.php');
+        $this->_modelsClassDir = $modelsClassDir;
+        $this->_dataClassDir = $dataClassDir;
     }
 
-    /**
-     * @param $name
-     * @return mixed
-     */
-    public function getData($name)
+    public function getDataClass(string $name): string
     {
-        if (!array_key_exists($name, $this->_cache)) {
-            $path = $this->getPath($name);
-            /** @noinspection PhpIncludeInspection */
-            $this->_cache[$name] = include $path;
+        return $this->_dataClassDir . '\\' . $name;
+    }
+
+    public function getModelsClass($name)
+    {
+        return $this->_modelsClassDir . '\\' . $name;
+    }
+
+    public function getData($name): array
+    {
+        $dataClass = $this->getDataClass($name);
+        if (method_exists($dataClass, 'getMap')) {
+            return $dataClass::getMap();
         }
-        return $this->_cache[$name];
+        return [];
     }
 
     public function collectData($name)
@@ -37,13 +45,28 @@ class FileDbManager
         return collect($this->getData($name));
     }
 
-/*    public function getModels()
+    public function getModels($name)
     {
-
+        $data = $this->getData($name);
+        $class = $this->getModelsClass($name);
+        $res = [];
+        foreach ($data as $item) {
+            $object = new $class;
+            $this->populateModelClass($object, $item);
+            $res[] = $object;
+        }
+        return $res;
     }
 
-    public function collectModels()
+    public function collectModels($name)
     {
+        return collect($this->getModels($name));
+    }
 
-    }*/
+    private function populateModelClass($object, $data)
+    {
+        foreach ($data as $key => $val) {
+            $object->$key = $val;
+        }
+    }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\Translation
+ * App\Models\Eloquent\Translation
  *
  * @property int $id
  * @property string $text
@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property int $group_id
  * @property int $translated_word_id
- * @property-read \App\Models\TranslationGroup $group
+ * @property-read \App\Models\Eloquent\TranslationGroup $group
  */
 class Translation extends Model
 {
