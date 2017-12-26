@@ -15,7 +15,7 @@ use App\Models\Eloquent\OriginalDictum;
 use App\Data\FileDb\Languages;
 use App\Models\Eloquent\TranslatedDictumGroup;
 
-class WordsController extends Controller
+class DictaController extends Controller
 {
     public function search()
     {
@@ -24,7 +24,7 @@ class WordsController extends Controller
             ->with('translations')
             ->get();
 
-        return response()->json($models);
+        return response()->json(['data' => $models]);
     }
 
     public function create(TranslationSaveRequest $request)

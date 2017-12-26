@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTranslatedDictumsTable extends Migration
+class CreateTranslatedDictaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTranslatedDictumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('translated_dictums', function (Blueprint $table) {
+        Schema::create('translated_dicta', function (Blueprint $table) {
             $table->increments('id');
             $table->string('spelling');
             $table->integer('original_dictum_id');
@@ -32,7 +32,7 @@ class CreateTranslatedDictumsTable extends Migration
                 ->onUpdate('CASCADE');
 
             $table->foreign('original_dictum_id')
-                ->on('original_dictums')
+                ->on('original_dicta')
                 ->references('id')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');

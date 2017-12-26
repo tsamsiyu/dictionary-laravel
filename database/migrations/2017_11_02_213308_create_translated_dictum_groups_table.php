@@ -20,7 +20,7 @@ class CreateTranslatedDictumGroupsTable extends Migration
             $table->timestamps();
 
             $table->foreign('original_dictum_id')
-                ->on('original_dictums')
+                ->on('original_dicta')
                 ->references('id')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');

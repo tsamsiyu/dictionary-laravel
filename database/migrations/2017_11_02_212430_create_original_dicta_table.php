@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOriginalDictumsTable extends Migration
+class CreateOriginalDictaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOriginalDictumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('original_dictums', function (Blueprint $table) {
+        Schema::create('original_dicta', function (Blueprint $table) {
             $table->increments('id');
             $table->string('spelling');
             $table->integer('author_id');
@@ -38,6 +38,6 @@ class CreateOriginalDictumsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('original_dictums');
+        Schema::dropIfExists('original_dicta');
     }
 }
