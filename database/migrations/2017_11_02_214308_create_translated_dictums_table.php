@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTranslationTable extends Migration
+class CreateTranslatedDictumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,27 +13,26 @@ class CreateTranslationTable extends Migration
      */
     public function up()
     {
-        Schema::create('translations', function (Blueprint $table) {
+        Schema::create('translated_dictums', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('text');
+            $table->string('spelling');
+            $table->integer('original_dictum_id');
+            $table->integer('language_id');
             $table->boolean('is_figurative')->nullable();
             $table->boolean('is_conversational')->nullable();
-            $table->text('explanation')->nullable();
-            $table->string('image_src')->nullable();
             $table->integer('frequency_usage')->nullable();
-            $table->integer('applying_style_id')->nullable();
+            $table->integer('lexical_type_id')->nullable();
             $table->integer('group_id')->nullable();
-            $table->integer('translated_word_id');
             $table->timestamps();
 
             $table->foreign('group_id')
-                ->on('translation_groups')
+                ->on('translated_dictum_groups')
                 ->references('id')
                 ->onDelete('SET NULL')
                 ->onUpdate('CASCADE');
 
-            $table->foreign('translated_word_id')
-                ->on('words')
+            $table->foreign('original_dictum_id')
+                ->on('original_dictums')
                 ->references('id')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
@@ -47,6 +46,6 @@ class CreateTranslationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('translations');
+        Schema::dropIfExists('translated_dictums');
     }
 }

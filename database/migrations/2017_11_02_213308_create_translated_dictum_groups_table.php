@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTranslationGroupsTable extends Migration
+class CreateTranslatedDictumGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,17 @@ class CreateTranslationGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('translation_groups', function (Blueprint $table) {
+        Schema::create('translated_dictum_groups', function (Blueprint $table) {
             $table->increments('id');
             $table->text('explanation');
+            $table->integer('original_dictum_id');
             $table->timestamps();
+
+            $table->foreign('original_dictum_id')
+                ->on('original_dictums')
+                ->references('id')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
         });
     }
 
@@ -27,6 +34,6 @@ class CreateTranslationGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('translation_groups');
+        Schema::dropIfExists('translated_dictum_groups');
     }
 }
