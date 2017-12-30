@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Core\Controller;
-use App\Http\Requests\TranslationSaveRequest;
+use App\Http\Requests\Frontend\TranslationSaveRequest;
 use App\Models\Eloquent\TranslatedDictum;
 use App\Models\Eloquent\OriginalDictum;
 use App\Data\FileDb\Languages;

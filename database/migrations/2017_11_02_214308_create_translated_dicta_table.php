@@ -21,7 +21,7 @@ class CreateTranslatedDictaTable extends Migration
             $table->boolean('is_figurative')->nullable();
             $table->boolean('is_conversational')->nullable();
             $table->integer('frequency_usage')->nullable();
-            $table->integer('lexical_type_id')->nullable();
+            $table->integer('speech_style_id')->nullable();
             $table->integer('group_id')->nullable();
             $table->timestamps();
 
@@ -46,6 +46,6 @@ class CreateTranslatedDictaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('translated_dictums');
+        Schema::dropIfExists('translated_dicta');
     }
 }
