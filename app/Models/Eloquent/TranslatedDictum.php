@@ -10,8 +10,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int id
  * @property string spelling
  * @property int group_id
- * @property int word_id
+ * @property int original_dictum_id
  * @property int speech_style_id
+ * @property int language_id
  *
  * @property-read \App\Models\Eloquent\TranslatedDictumGroup $group
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Eloquent\OriginalDictum[] $origin

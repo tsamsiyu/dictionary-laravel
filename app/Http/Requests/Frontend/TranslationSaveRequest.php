@@ -8,7 +8,6 @@
 
 namespace App\Http\Requests\Frontend;
 
-use App\Extensions\FileDb\FileDb;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TranslationSaveRequest extends FormRequest
@@ -23,10 +22,14 @@ class TranslationSaveRequest extends FormRequest
         return [
             'spelling' => 'required',
             'dataType' => 'required|in:simple,complex',
-            'groups' => 'required|array',
-            'groups.*.explanation' => 'nullable|required_if:dataType,complex|string|max:255',
-            'groups.*.translations' => 'required|array',
-            'groups.*.translations.*.spelling' => 'required|string|max:255',
+
+            'translation_groups' => 'nullable|array',
+            'translation_groups.*.explanation' => 'nullable|required_if:dataType,complex|string|max:255',
+            'translation_groups.*.translations' => 'nullable|required_if:dataType,complex|array',
+            'translation_groups.*.translations.*.spelling' => 'nullable|required_if:dataType,complex|string|max:255',
+
+            'translations' => 'nullable|array',
+            'translations.*.spelling' => 'nullable|required_if:dataType,simple|string|max:255',
         ];
     }
 
@@ -44,18 +47,4 @@ class TranslationSaveRequest extends FormRequest
             'groups.*.translations.*.spelling' => 'translation',
         ]);
     }
-
-//    private function languagePartsIds()
-//    {
-//        return FileDb::collectData('LanguageParts')
-//            ->pluck('id')
-//            ->implode(',');
-//    }
-//
-//    private function applyingStylesIds()
-//    {
-//        return FileDb::collectData('ApplyingStyles')
-//            ->pluck('id')
-//            ->implode(',');
-//    }
 }

@@ -20,7 +20,7 @@ class OriginalDictum extends Model
 {
     public function translations()
     {
-        return $this->hasMany(TranslatedDictum::class);
+        return $this->hasMany(TranslatedDictum::class)->where('group_id', null);
     }
 
     public function translationGroups()
